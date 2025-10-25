@@ -1,0 +1,707 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+    <link rel="icon" href="favicon.ico" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>【官网】匿名聊天 - 烛光nmcp 在线匿名聊天交友社区</title>
+    <meta name="keywords" content="烛光nmcp,匿名聊,匿名聊天,虚拟恋人,倾诉,闲聊,叔叔有约,在线聊天,免费,交友,无需注册,匿名,隐私保护,deskry,无注册匿名在线聊天," />
+    <meta name="Description" content="nmliao.cn - 烛光nmcp,匿名聊,匿名聊天,这里可能是全球人气最火爆、功能最强大的匿名聊天社区,随机一对一匹配、虚拟恋人、建房群聊、私聊皆可,无需注册即可匿名畅聊交友,隐私无忧,畅所欲言！" />
+
+    <link rel="stylesheet" href="/css/common.css?v31" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/csshake-slow.css?v15" />
+    <link rel="stylesheet" href="/css/layui.css" media="all" />
+
+    <script type="text/javascript">
+
+        var ServerInfo = 'serversdeskry';
+        var UpImg = 'uploadImgRandom';
+        var Notice1_WXGZHTitle = 'nmliao.cn';
+        var Notice1_WXGZH = 'deskrynmll.jpg';
+		var T_AreaTips = '【生活区】 特权 0.1 元起';
+
+        var userIP = '';
+
+        var Imgarr = ['8001', '8002','8003', '8005', '8006', '9001', '9002', '9003', '9005', '9006'];
+
+    </script>
+
+
+    <script src="/useripaddressv23.js"></script>
+
+    <!--<script src="/js/jquery-3.3.1.js"></script>-->
+    <!--<script src="/js/min/jquery-1.9.1.min.js"></script>-->
+
+    <script src="/js/jquery.min.js"></script>
+
+    <script type="text/javascript" src="/js/bj.js?v2"></script>
+
+    <script type="text/javascript" src="/fancybox-2.1.7/lib/jquery.mousewheel.pack.js?v=3.1.3"></script>
+    <script type="text/javascript" src="/fancybox-2.1.7/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+    <link rel="stylesheet" type="text/css" href="/fancybox-2.1.7/source/jquery.fancybox.css?v=2.1.5" media="screen" />
+
+    <script type="text/javascript" src="/js/fancyimg.js?v1"></script>
+
+    <link rel="stylesheet" type="text/css" href="/jquerybarrager/dist/css/barrager.css?v8">
+    <script type="text/javascript" src="/jquerybarrager/dist/js/jquery.barrager.js?v6"></script>
+
+    <link id="themeChange" rel="stylesheet" href="/css/random.css?v46" />
+
+    <style type="text/css">
+        /*//强制文本在一行内输出 //隐藏溢出部分 //对溢出部分加上...;*/
+        .oneline {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .upUserlist {
+            padding: 0px;
+            background-color: transparent;
+            color: #fff;
+            position: absolute;
+            bottom: 20%;
+            left: 50%;
+            border-radius: 5px;
+            -webkit-transform: translate(-50%,-50%);
+            -moz-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+        }
+
+
+        #doBlack {
+            position: absolute;
+            top: 75px;
+            right: 10px;
+            opacity: 0.5;
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+            background-color: #DBDBDB;
+            color: red;
+            line-height: 50px;
+            padding-left: 12px;
+            z-index: 10;
+        }
+
+        #warningReport {
+            top: 130px;
+        }
+
+        #goBottom {
+            top: 185px;
+        }
+    </style>
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div class="left-main">
+            <div class="left-main-userlist">
+                <div style="position: relative; height: 88px; margin-left: 10px; display: none; ">
+                    <img style="position: absolute; top: 20%; left: 2%; width: 50px; " src="/img/sys/logo.png" />
+                    <div style="position: absolute; top: 10%; right: 20%; width: auto; color: #2697F2; font-size: 20px; font-weight: 900; ">Deskry 匿名社区</div>
+                    <div style="position: absolute; top: 40%; right: 17%; width: auto; color: orange; font-size: 35px; font-weight: 900; "><a href="http://nnliao.cn" target="_self" style=" color: #5cb85c;">nmchat.cn</a></div>
+                    <!--<div style="clear:both;color:gray;text-align:center;">但关键是——你说啥？</div>-->
+                </div>
+                <div class="userListHeader" style="height: 83px; margin-bottom: 0px; overflow: hidden;">
+
+                    <div id="user_count" class="list-group-item list-group-item-success" style="cursor: pointer; background-color: #BBB; border:none;font-size:1.4rem;height:44px;overflow:hidden;"><span id="nowusers_count" class="badge" style="background-color:green;margin-top:5px;"></span><span style="margin-right:5px;" class="zql-bnt-users"></span>好友列表【最近3天】</div>
+
+                    <div id="user_Random" style=" background-color: #009688; float: left; width: 50%; height: 40px; line-height: 40px; text-align: center;">
+                        未收藏
+                    </div>
+
+                    <div id="user_Random_Del" style="display:none;background-color: #EEE; float: left; width: 0%; height: 40px; line-height: 40px; text-align: center; border-left: 1px #CCC solid; ">
+                        清空未收藏
+                    </div>
+
+                    <div id="user_My" style="background-color: #EEE; float: left; width: 50%; height: 40px; line-height: 40px; text-align: center; border-left: 1px #CCC solid; ">
+                        <img alt="已收藏" src="/img/sys/heart.png" style=" width: 20px; " />
+                        已收藏
+                    </div>
+
+                    <div id="user_My_Del" style="display: none; background-color: #EEE; float: left; width: 0%; height: 40px; line-height: 40px; text-align: center; border-left: 1px #CCC solid; ">
+                        清空已收藏
+                    </div>
+
+                </div>
+                <div id="user_list" class="" style="overflow-y:auto;margin-top:-1px;height:73%"></div>
+            </div>
+            <div class="left-main-pannel">
+
+            </div>
+            <div class="left-main-pannel_upUserlist">
+                <img alt="收起用户列表" class="upUserlist" src="/img/sys/upUserlist.gif" />
+                <img alt="收起用户列表" class="upUserlist" src="/img/sys/upUserlist.gif" style="bottom:15%" />
+                <img alt="收起用户列表" class="upUserlist" src="/img/sys/upUserlist.gif" style="bottom: 25%" />
+            </div>
+        </div>
+        <div class="right-main" style="display:none;">
+            <div class="right-main-roomlist">
+                <div class="right-main-roomlist-title">热门房间排名</div>
+                <div id="hotrooms" style="overflow-y:auto;" class="right-main-roomlist-main scrollbar"></div>
+
+                <div class="hotrooms_title">意见反馈</div>
+                <div style="margin-top:10px;margin-left:10px;float:left;">
+                    <div style="font-size:15px;">
+                        匿名聊 - Deskry 在线匿名聊天室
+                        <br /><span style="font-size:20px;font-weight:900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/files/deskry.apk" target="_blank">安卓App下载</a></span>
+                        <br /><span style="font-size:20px;font-weight:900">QQ：<a href="https://wpa.qq.com/msgrd?v=3&uin=928191875&site=qq&menu=yes" target="_self">928191875</a></span>
+                        <br /><span style="font-size:20px;font-weight:900">微信：<a target="_blank" href="weixin://dl/add">deskry</a></span>
+                        <br /><span style="font-size:10px;font-weight:900">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="/opc.html" target="_blank">~返回旧版~</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="right-main-pannel">
+
+            </div>
+        </div>
+        <div class="title-main">
+            <div id="oldUserList" class="title-left">
+
+            </div>
+            <div class="title-center" style="left:18%;">
+                <div class="title-center-roomname">
+                    <span id="msg_title">&nbsp;</span>
+                </div>
+                <div class="title-center-roomcmd">
+                    <img id="msg_tips" title="声音提醒" style="cursor: pointer; width: 20px; float: right; margin-top: 0px; " src="/img/sys/sound_on.png" />
+                    <img id="theme_sun_moon" title="主题切换" style="cursor: pointer; width: 25px; float: right; margin-top: -2px; margin-right: 8px; " src="/img/sys/sun1.png" />
+                    <div id="colorpicker" style="cursor: pointer; float: right; margin-top: -2px; margin-right: 8px; "></div>
+                    <!--<img id="msg_clear" title="消息清空" style="cursor:pointer;width:25px;float:right;margin-right:15px;" src="/img/sys/msgclear.png" />-->
+                    <!--<img id="msg_back" title="消息撤回" style="cursor: pointer; width: 20px; float: right; margin-right: 0px; margin-top: 0px;" src="/img/sys/msgback.png" />-->
+                    <!--<button id="btn_more" type="button" class="btn btn-info">更多</button>-->
+                    <!--<img id="sharelink" title="分享链接" style="cursor:pointer;width:25px;float:right;margin-right:15px;" src="/img/sys/share.png" />-->
+                    <audio id="msg_sound" src="/plug/tip.mp3"></audio>
+                </div>
+            </div>
+            <div class="title-right" style="display:none;">
+
+            </div>
+        </div>
+        <div class="message-body" style="height: 95%;">
+            <div id="div_msgpanel" class="">
+
+                <div id="goTop_hide" style="display:none;">置顶</div>
+                <div id="doADbak" style="display:none;">陪伴</div>
+                <div id="doBlack" style="display:none;">拉黑</div>
+                <div id="warningReport" style="display:none;">举报</div>
+                <div id="goBottom_hide" style="display:none;">置底</div>
+
+                <div id="div_msgbox_first" class="panel-body scrollbar" style="padding: 0px; position: relative; height: 100%; -webkit-overflow-scrolling: touch">
+                    <div onclick="return false;" style="width:350px;text-align:center;margin:1px auto;color:#333;">
+                        <!--onclick="return false;" 让此区域点击无效-->
+						<div><img alt="nmchat.cn 匿名聊" src="/img/sys/logo.png" width="50" style="top:8px;" /></div>
+                        <div id="AltInfo" style="margin: 0px auto; margin-bottom: 0px;text-align:center;">
+                            
+                            <img id="randomVIP" alt="nmchat.cn 匿名聊" src="/img/sys/vip.png" style="position: relative;top: -50px;left: 15px; width: 20px;margin-bottom: 0px; display:none;" />
+                            <a target="_self" id="JumpURL_WB" href="/randomdeskry.html?v1" class="shake-slow1 shake-constant1" style="position: absolute; top: 63px; right: -130px; font-weight: 700; width: 330px; height: 25px; color: red; margin-bottom: 0px; display: none; ">点此重新选区</a>
+                            <a target="_self" id="Tips_WB" href="/random.html?wb1" class="" style="position: absolute; top: 87px; right: -134px; width: 335px; height: 25px; color: #AAA; font-size: 12px; margin-bottom: 0px; display: none;">点此向在线客服举报引流等违规(提供对方昵称或聊天内容截图)</a>
+                            <div><a target="_self" id="Tips_Warn010" href="#" class="" style="color: #009688; font-size: 13px; margin-bottom: 0px; text-decoration: none;display:none;">可以浏览器访问：  deskry.net  </a></div>
+                            <div><a target="_self" id="Tips_Warn010" href="#" class="" style="color: red; font-size: 13px; margin-bottom: 0px; text-decoration: none;display:none;">由于网站遭受攻击导致 VIP 用户收到影响，期间受影响者可联系客服 QQ：928191875 申请加时补偿</a></div>
+                            <div><a target="_self" id="Tips_Warn01" href="#" class="" style="color: red; font-size: 13px; margin-bottom: 0px; text-decoration: none;display:none;">支付宝支付已上线（非微信内使用,商户订单即是激活码）<br />点击本页面“购买”按钮即可体验<br />订单激活码获取疑问可咨询QQ客服</a></div>
+                            <div><a target="_self" id="Tips_Warn" href="#" class="" style=" color: #009688;font-size: 12px; margin-bottom: 0px; text-decoration: none;display:block;">1.安装对方发的App（例如视频、直播等）会导致手机中毒通讯录和相册视频被盗然后被勒索，本平台暂未上线任何App，发现直接举报，谨防上当受骗</a></div>
+                            <div><a target="_self" id="Tips_Warn1" href="#" class="" style="color: #009688; font-size: 12px; margin-bottom: 0px; text-decoration: none; display: block;">2.禁止进行黄、赌、毒、恶意泄露他人隐私、广告引流等任何违法违规行为，如发现违规可点击聊天页面右下角“举报”或向在线客服举报，一经核实立即封禁</a></div>
+                            <div><a target="_self" id="Tips_Warn2" href="#" class="" style="color: #009688; font-size: 12px; margin-bottom: 0px; text-decoration: none; display: none;">3.为了防止身份码丢失，导致好友与聊天记录丢失，建议统一使用 “<span id="InformMyOrder" style="color:red;font-weight:700;">我的订单</span>”页面建议的与微信号绑定的唯一身份码</a></div>
+                            <div><a target="_self" id="Tips_Warn3" href="#" class="" style="color: #009688; font-size: 12px; margin-bottom: 0px; text-decoration: none; display: block;">激活码在有效期内可以不限次数，电脑、手机、qq、微信 都能多次激活使用哦 “<span id="InformMyOrder" style="color:red;font-weight:700;">激活码</span>”</a></div>
+
+                            <div><a target="_self" id="Tips_Warn4" href="#" class="" style="color: #009688; font-size: 12px; margin-bottom: 0px; text-decoration: none; display: none;">为防止好友和聊天记录丢失，请尽快使用页面下方<span class="btn_Login" style="color:red;font-weight:700;">【登录】</span>功能，首次请先注册</a></div>
+
+                            <div><a target="_self" id="Tips_Warn99" href="#" class="" style="color: red; font-size: 12px; margin-bottom: 0px; text-decoration: none;display:none;">由于服务器在 2023-01-18 21：26 左右开始被DDos和CC攻击导致部分用户访问异常，技术正在紧急处理恢复，并已联系服务器商收集相关攻击信息进行追查，带来不便，表示抱歉，期间受影响 vip 用户可联系QQ：928191875 客服提供激活码申请加时补偿</a></div>
+
+                        </div>
+
+                        <div id="SlideUserInfos" style="text-align: center; line-height: 25px; letter-spacing: 2px; margin: 5px; color: #AAA; margin-top: 5px; position: relative; cursor: pointer; ">
+                            ---------
+                            <span class="SlideUp" style="top: -12px;"></span>
+                            <span class="SlideUp" style="top: -12px;"></span>
+                            &nbsp;隐藏/显示
+                            <span class="SlideUp" style="top: -12px;"></span>
+                            <span class="SlideUp" style="top: -12px;"></span>
+                            &nbsp;---------
+                        </div>
+
+                        <div class="userInfo">
+                            <div class="input-group">
+                                <span class="input-group-addon" style="color: orange; background-color: transparent; border-color: orange;">昵称</span>
+                                <input id="inp_nickname_other" type="text" maxlength="10" class="form-control">
+
+                                <span id="btn_inroom" style="display:none;"></span>
+
+                                <span class="input-group-btn" title="改名" style="background-color: transparent;">
+                                    <button class="btn btn-default" type="button" style="background-color: transparent; border-color: orange;border-radius:0px;border-left:none;border-right:none;">
+                                        <span class="glyphicon" style="color: orange; top: 0px; font-size: 15px; font-weight: 700; background-color: transparent;">改名</span>
+                                    </button>
+                                </span>
+                                <span id="btn_getnick_other" class="input-group-btn" title="随机修改名称，自定义修改后点击页面其它地方即可生效">
+                                    <button class="btn btn-default" type="button" style="background-color: transparent;border-color:orange;">
+                                        <span class="glyphicon" style="color: orange; top: 0px; font-size: 15px; font-weight: 700; background-color: transparent;">随机</span>
+                                    </button>
+                                </span>
+                            </div>
+
+                            <form class="layui-form" action="">
+
+                                <div class="layui-form-item" pane="" style="margin-bottom:0px;margin-top:5px;">
+                                    <label class="layui-form-label">性别：</label>
+                                    <div class="layui-input-block" style="width: 245px; margin-left: 50px;">
+                                        <input type="radio" name="sex" value="男" title="男" lay-filter="radioSex">
+                                        <input type="radio" name="sex" value="女" title="女" lay-filter="radioSex">
+                                        <input type="radio" name="sex" value="保密" title="保密" checked="" lay-filter="radioSex">
+                                        <!--<input type="radio" name="sex" value="禁" title="禁用" disabled="">-->
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item" pane="" style="margin-bottom:0px;margin-top:0px;display:none;">
+                                    <label class="layui-form-label">年龄：</label>
+                                    <div class="layui-input-block" style="width: 250px; margin-left: 77px; padding-top: 17px;">
+                                        <div id="slideTest8" class="demo-slider"></div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item" pane="" style="margin-bottom:0px;margin-top:0px;">
+                                    <label class="layui-form-label">年龄：</label>
+                                    <div class="layui-input-block" style="width: 250px; margin-left: 77px; padding-top: 0px;">
+                                        <div id="SliderrandomAge" style="width: 30px; float: left; top: 10px; position: relative; left: -5px; ">0</div>
+                                        <div id="js-example-destroy">
+                                            <output style="width: 30px; float: left;display:none; "></output>
+
+                                            <input id="InitAge" type="range" min="0" max="100" step="1" value="0" data-rangeslider>
+
+                                            <button class="button button--small" data-behaviour="destroy" style="display:none;">取消样式</button>
+                                            <button class="button button--small" data-behaviour="initialize" style="display:none;">初始化</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+                                    <label class="layui-form-label" style="width:125px;">显示城市：</label>
+                                    <div class="layui-input-block" style="width: 186px; margin-left: 5px;">
+                                        <input id="address_show" type="checkbox" name="close" lay-skin="switch" lay-text="公开|保密" lay-filter="switchAddress">
+                                    </div>
+                                </div>
+
+                                <div class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+                                    <label class="layui-form-label" style="width:125px;">青少年模式：</label>
+                                    <div class="layui-input-block" style="width: 186px; margin-left: 5px;">
+                                        <input id="health_mode" type="checkbox" name="close" lay-skin="switch" lay-text="开启|关闭" lay-filter="switchHealthMode">
+                                        <span id="health_mode_tip"></span>
+                                    </div>
+                                </div>
+
+                                <div style="text-align: center; line-height: 18px; letter-spacing: 2px; margin: 5px; color: #DDD; cursor: pointer; display: none;">----- <span style="color: #840084;font-size:15px;font-weight:700;" onclick="inputVipCode();"> VIP  </span>-----</div>
+
+                                <div id="area_VIP" class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+
+                                    <div class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+                                        <label class="layui-form-label" style="width:125px;">只匹配异性：</label>
+                                        <div class="layui-input-block" style="width: 170px; margin-left: 5px;">
+                                            <input id="vip_sex" type="checkbox" name="close" lay-skin="switch" lay-text="是|否" lay-filter="switchVipSex">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+                                        <label class="layui-form-label" style="width:125px;">只匹配同省：</label>
+                                        <div class="layui-input-block" style="width: 170px; margin-left: 5px;">
+                                            <input id="vip_Address" type="checkbox" name="close" lay-skin="switch" lay-text="是|否" lay-filter="switchVipAddress">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="layui-form-item" style="margin-bottom:0px;margin-top:0px;">
+                                        <label class="layui-form-label" style="width:125px;">切换身份码：</label>
+                                        <div class="layui-input-block" style="width: 200px; margin-left: 10px;">
+                                            <button id="btn_GetMyinfo" type="button" class="btn btn-info" style="width: 80px; background-color: #5FB878;">切换</button>
+                                        </div>
+                                    </div>
+
+                                    <div id="area_VIP_Close" style="background-color: #333; opacity: 0.5; width: 100%; height: 100%; position: absolute; top: 0px; border-radius: 2px;"></div>
+                                    <div id="area_VIP_Close_btn" style="position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;  ">
+                                        <div id="AreaTips" style="position: absolute; top: 30px; right: 145px; border-radius: 5px; width: 185px; height: 30px; line-height: 30px; color: cyan; border-color: #F0CAB6; background-color: transparent; font-weight: 700; ">【生活区】VIP 特权 0.1 元起</div>
+                                        <div id="btn_buy_vipcode" style="position: absolute; top: 8px; right: 70px; border-radius: 2px; width: 60px; height: 35px; line-height: 35px; color: red; border-color: #F0CAB6; background-color: #CCC; font-weight:700;">购买</div>
+                                        <div id="btn_input_vipcode" style="position: absolute; top: 8px; right: 5px; border-radius: 2px; width: 60px; height: 35px; line-height: 35px; color: #E5511D; border-color: #F0CAB6; background-color: #CCC; ">激活</div>
+                                        <div id="btn_MyOrders" style="position: absolute; top: 50px; right: 5px; border-radius: 2px; width: 125px; height: 40px; line-height: 40px; color: #E5511D; border-color: #F0CAB6; background-color: #CCC; ">我的订单</div>
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                            <div style="position: relative; top: -55px; left: 170px; width: 160px; ">
+                                <button id="btn_modinfo" type="button" class="btn btn-info" style="display:none;">修改性别和城市信息</button>
+                            </div>
+
+                        </div>
+
+                        <style type="text/css">
+                            .SlideUp {
+                                position: relative;
+                                width: 0;
+                                height: 0;
+                                border-top: 6px solid transparent;
+                                border-right: 6px solid transparent;
+                                border-bottom: 6px solid #DDD;
+                                border-left: 6px solid transparent;
+                            }
+
+                            .SlideDown {
+                                position: relative;
+                                width: 0;
+                                height: 0;
+                                border-top: 6px solid #DDD;
+                                border-right: 6px solid transparent;
+                                border-bottom: 6px solid transparent;
+                                border-left: 6px solid transparent;
+                            }
+                        </style>
+
+
+
+                        <div style="text-align: left; text-indent: 2em; line-height: 20px; letter-spacing: 2px; position: relative; margin: 20px; ">
+                            <div id="ButtonRandom" class="shake-slow shake-constant guangshu" style="text-indent: 2px; width: 86px; height: 86px; line-height: 86px; margin: 0px auto 0px; text-align: center; background-color: #009688; cursor: pointer; color: #fff; border-radius: 50%; font-size: 15px; font-weight: 700; ">
+                                匹配
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div style="text-align: center; line-height: 18px; letter-spacing: 2px; margin: 10px; margin-top: 0px; ">
+						<button type="button" class="btn btn-info btn_QR_Share" style="opacity: 1; border-radius: 2px;color:red;font-weight:700; ">分享</button>
+                        <button type="button" class="btn btn-info btn_Friends" style="opacity: 1;border-radius:2px;">好友</button>
+                        <button type="button" class="btn btn-info btn_Orders" style="opacity: 0.9; border-radius: 2px;">订单</button>
+                        <button type="button" class="btn btn-info btn_Show_Leave_Message" style="opacity: 0.8; border-radius: 2px; ">寻人</button>
+                        <button type="button" class="btn btn-info btn_Login" style="opacity: 1; border-radius: 2px; font-weight: 700; color: tomato;">登陆</button>
+                    </div>
+
+                    <div style="text-align: center; line-height: 18px; letter-spacing: 2px; margin: 5px; margin-top: 0px; ">
+                        <button type="button" class="btn btn-info btn_Repair" style="opacity: 0.9; border-radius: 2px;display:;">注销</button>
+                        <button type="button" class="btn btn-info btn_Show_Myinfos" style="opacity: 0.8; border-radius: 2px;">设置</button>
+                        <button type="button" class="btn btn-info btn_Reload" style="opacity: 0.7; border-radius: 2px;">刷新</button>
+                        <button type="button" class="btn btn-info btn_KFQQ" style="opacity: 0.6; border-radius: 2px;">客服</button>
+                        <button type="button" class="btn btn-info btn_Show_SNSInfo" style="opacity: 0.5; border-radius: 2px; display: none; ">答疑</button>
+                    </div>
+
+                    <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;">您当前的【身份码】如下（点击复制）：</div>
+                    <div id="UserID" style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: orange; font-size: 12px; cursor: pointer;">***</div>
+
+                    <div id="SlideSysInfos" style="text-align: center; line-height: 18px; letter-spacing: 2px; margin: 5px; color: #333; color: #AAA; position: relative; cursor: pointer;">
+                        ---------
+                        <span class="SlideDown" style="top: 14px;"></span>
+                        <span class="SlideDown" style="top: 14px;"></span>
+                        &nbsp;隐藏/显示
+                        <span class="SlideDown" style="top: 14px;"></span>
+                        <span class="SlideDown" style="top: 14px;"></span>
+                        &nbsp;---------
+                    </div>
+
+                    <div class="sysInfo">
+                        <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;display:none;">【客服处理能力有限，暂对中国内地开放，敬请谅解】</div>
+                        <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;">【请勿轻易将自己隐私信息公布，以免被骗】</div>
+                        <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;">【要求添加QQ或微信进行资金交易的一律为骗子，切勿相信】</div>
+                        <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;">【遇到违规可截图发给在线<a href='https://wpa.qq.com/msgrd?v=3&uin=928191875&site=qq&menu=yes' style="color: #009688; font-weight: 700; text-decoration: underline;" target='_blank'> QQ客服：928191875 </a>，一经核实永久封禁】</div>
+                        <div style="text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px;">【让我们一起努力维护良好的社区环境】</div>
+                        <div style="position: relative; text-align: center; line-height: 18px; letter-spacing: 1px; margin: 5px; color: #BBB; font-size: 12px; width: 350px; text-align: left; margin: 0px auto; text-indent: 25px;">本平台纯属互联网技术爱好者创业类服务，从2014年开始坚持不断更新至今，不忘初心，坚持技术向善，分享互联网技术的乐趣，不收取任何费用，拒绝一切形式的黄赌毒等任何违法违规言论或行为，坚决拥护国家的法律法规，并设有人工在线
+						<a href='https://wpa.qq.com/msgrd?v=3&uin=928191875&site=qq&menu=yes' style="color: #009688; font-weight: 700; text-decoration: underline;" target='_blank'> QQ客服：928191875 </a>，
+						由于有时用户数量过大，需要购买更高性能的服务器，但是资金问题随之而来，与大家匿名讨论后为了可持续发展，最终决定推出 特权 模式，尽最大努力保持以前的功能仍然免费，在新的功能上收费，感谢大家的喜欢与支持。
+						<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;结语：您的任何意见我们都会尽全力满足，当然我们也很乐于挑战更好的技术体验，有任何问题皆可反馈。同时，一旦发现任何违法违规者，我们将立即永久封号，对于情节严重者本站将积极配合公安部门进行追责。互联网并不是法外之地，请大家遵纪守法，共建和谐社会，一起为中华复兴而努力！
+						<br /><img src="/img/sys/randomLL.png" style=" position: absolute; bottom: -65px; left: 42%; width: 50px;" /></div>
+                    </div>
+
+                    <div style="text-align: center; line-height: 18px; letter-spacing: 2px; margin: 5px; margin-top: 20px; ">
+                        <button type="button" class="btn btn-info btn_Leave_Message" style="margin-right:15px;display:none;">我要留言</button>
+                        <button type="button" class="btn btn-info btn_Show_Leave_Message" style="margin-right:15px;display:none;">我要寻人</button>
+                    </div>
+
+                    <div style="color: #999;font-size: 12px;margin:0px auto;width:335px;text-align:center;margin-top:55px;display:none;">Copyright ©2014-Now nmchat.cn - Deskry 匿名社区</div>
+                    <div style="color: #999; font-size: 12px; margin: 0px auto; width: 150px; text-align: center;display:none;"><a target="_blank" style="color: #999;font-size: 12px;" href="http://www.beian.miit.gov.cn">粤ICP备19026086号</a></div>
+
+                </div>
+
+                <div id="div_msgbox" class="panel-body scrollbar" style="display:none;">
+
+                </div>
+
+                <div id="div_privmsg" class="panel-body scrollbar" style="display: none; padding: 2px 10px;">
+
+                </div>
+
+                <div id="div_SNSInfo" class="panel-body scrollbar" style="display: none;text-align:center; font-size: 12px; color: #BBB; text-indent: 25px; letter-spacing: 1px; ">
+                    <div style="font-size: 25px; font-weight: 700; color: #000; letter-spacing: 0px;">功能介绍</div>
+                    <div>清流模式：开启后屏蔽所有敏感词</div>
+                    <div>身份找回：独创可实现多终端使用都保持原来身份和用户聊天记录，类似账号登录或人的身份证号</div>
+                    <button id="btn_SNSInfo_return" type="button" class="btn btn-info" style="">返回</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="input-main">
+            <div class="input-message">
+                <div class="input-tools-link-more">
+
+                    <div id="toolMain" style="width:90px;">
+                        <button id="btn_random" type="button" class="btn btn-info" style="">匹配</button>
+                        <button id="btn_random_break" type="button" class="btn btn-info" style=" display: none;">离开</button>
+                        <button id="btn_random_return" type="button" class="btn btn-info" style=" display: none;">返回</button>
+                        <div class="emoji_div" style="position:absolute;"></div>
+                        <a id="emoji_a" class="emoji" style="float:right;" data-toggle="popover" data-placement="top" title="表情"><img style="outline-width:40px;" class="img_emoji" src="https://img.t.sinajs.cn/t4/appstyle/expression/ext/normal/5c/huanglianwx_thumb.gif" /></a>
+                    </div>
+
+                </div>
+                <div class="input-area">
+                    <input type="text" id="inp_say" placeholder="畅聊吧~" autocomplete="off" oninput="inputStatus();" onblur="hidInputStatus();" />
+                    <span id="sendVoice" style="position: absolute; width: 35px; height: 25px; right: 5px; top: 3px; background: url(/img/sys/record.png) no-repeat 10px 0px; cursor: pointer; display: none;"></span>
+                </div>
+                <div class="input-tools-link-img">
+                    <div style="width:90px;">
+                        <input id='uploading_file' type='file' style='display:none;' />
+                        <a id="a_uploadimg" style="margin-right:0px;" title="上传图片"><img style="padding-top:4px;" class="img_uploadimg" src="/img/sys/uploadpic_pic.png" /></a>
+                        <button id="btn_say" type="button" class="btn btn-success">发送</button>
+                    </div>
+                </div>
+            </div>
+            <div class="input-tools">
+                <div class="input-tools-left">
+
+                    <div class="input-tools-some">
+
+                        <!--<a id="a_uploadfile" style="margin-right:10px;" title="上传文件"><img src="/img/uploadfile.png" /></a>-->
+                        <!--<a id="a_doodle" style="margin-right:10px;" title="涂鸦"><img src="/img/doodle.png" /></a>-->
+                        <!--<a style="cursor:default;margin-right:5px;">|</a>-->
+                        <!--<a id="a_getphoto" style="margin-right:10px;" title="拍照"><img src="/img/camera.png" /></a>-->
+                        <!--<a id="a_record" style="margin-right:10px;" title="录音"><img src="/img/record.png" /></a>-->
+                    </div>
+
+                    <div class="input-tools-link-send">
+                        <span style='color:gray;font-size:12px;'></span>
+                        <button id="btn_xf" type="button" class="btn btn-success" style="display:none;">修复</button>
+                        <button id="btn_creat" type="button" class="btn btn-success" style="display:none;">建房</button>
+                        <button id="btn_conn" type="button" class="btn btn-warning" style="display:none;">连接</button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--<div style="width: 100%; height: 2160px; position: fixed; top: 0px; left: 0px; z-index: -1; background: url('https://web.immomo.com/img/BG.jpg') no-repeat; background-size: cover; " onerror='errpicBJ(this)'>
+    </div>-->
+    <div style="position: absolute; text-align: center; bottom: 20px; width: 100%;display:none;">
+        <div style="color: #999;font-size: 12px;">Copyright ©2015-2020 nmchat.cn - 匿名聊天</div>
+        <div style="color: #999;font-size: 12px;"><a target="_blank" style="color: #999;font-size: 12px;" href="http://www.beian.miit.gov.cn">粤ICP备19026086号</a></div>
+    </div>
+
+    <script src="/layuidemo/layui.js" type="text/javascript"></script>
+
+    <script type="text/javascript" src="/js/layer/layer.js"></script>
+    <script type="text/javascript" src="/js/laypage/laypage.js"></script>
+    <script type="text/javascript" src="/js/jpegencoder.js?v1"></script>
+
+    <link rel="stylesheet" href="/rangeslider/css/rangeslider.css">
+    <script src="/rangeslider/js/rangeslider.min.js"></script>
+
+    <script type="text/javascript">
+	
+	var domain = document.domain;
+	
+	if(domain.indexOf("ozvzzs") != -1 || domain.indexOf("nmliaoliao") != -1)
+	{
+		window.location.href = "http://www.nmpipei.com/" ;
+	}
+	
+        //$(function () {
+
+        //    var $document = $(document);
+        //    var selector = '[data-rangeslider]';
+        //    var $inputRange = $(selector);
+
+        //    // Example functionality to demonstrate a value feedback
+        //    // and change the output's value.
+        //    function valueOutput(element) {
+        //        var value = element.value;
+        //        var output = element.parentNode.getElementsByTagName('output')[0];
+
+        //        output.innerHTML = value;
+
+
+        //        $("#SliderrandomAge").html(value);
+
+        //    }
+
+        //    // Initial value output
+        //    for (var i = $inputRange.length - 1; i >= 0; i--) {
+        //        valueOutput($inputRange[i]);
+        //    };
+
+        //    // Update value output
+        //    $document.on('input', selector, function (e) {
+        //        valueOutput(e.target);
+        //    });
+
+        //    // Initialize the elements
+        //    $inputRange.rangeslider({
+        //        polyfill: false
+        //    });
+
+        //    // Example functionality to demonstrate programmatic value changes
+        //    $document.on('click', '#js-example-change-value button', function (e) {
+        //        var $inputRange = $('input[type="range"]', e.target.parentNode);
+        //        var value = $('input[type="number"]', e.target.parentNode)[0].value;
+
+        //        $inputRange
+        //            .val(value)
+        //            .change();
+        //    });
+
+        //    // Example functionality to demonstrate programmatic attribute changes
+        //    $document.on('click', '#js-example-change-attributes button', function (e) {
+        //        var $inputRange = $('input[type="range"]', e.target.parentNode);
+        //        var attributes = {
+        //            min: $('input[name="min"]', e.target.parentNode)[0].value,
+        //            max: $('input[name="max"]', e.target.parentNode)[0].value,
+        //            step: $('input[name="step"]', e.target.parentNode)[0].value
+        //        };
+
+        //        $inputRange
+        //            .attr(attributes)
+        //            .rangeslider('update', true);
+        //    });
+
+        //    // Example functionality to demonstrate destroy functionality
+        //    $document
+        //        .on('click', '#js-example-destroy button[data-behaviour="destroy"]', function (e) {
+        //            $('input[type="range"]', e.target.parentNode).rangeslider('destroy');
+        //        })
+        //        .on('click', '#js-example-destroy button[data-behaviour="initialize"]', function (e) {
+        //            $('input[type="range"]', e.target.parentNode).rangeslider({ polyfill: false });
+        //        });
+        //});
+
+
+        $("#JumpURL_WB").click(function () {
+
+            window.location.href = "/random.html?wb88";
+
+        });
+
+        $("#Tips_WB").click(function () {
+
+            window.location.href = "https://wpa.qq.com/msgrd?v=3&uin=928191875&site=qq&menu=yes";
+
+        });
+
+
+        $(".btn_KFQQ").click(function () {
+
+            window.location.href = "https://wpa.qq.com/msgrd?v=3&uin=928191875&site=qq&menu=yes";
+
+        });
+
+        setTimeout(function () { $("#Tips_Warn0,#Tips_Warn2").fadeOut(); }, 3000);
+		
+		$("#AreaTips").html(T_AreaTips);
+		
+    </script>
+
+
+    <div style="display:none;">
+        <script type="text/javascript" src="/js/common.js?v39"></script>
+    </div>
+
+    <style type="text/css">
+        .layui-layer {
+            opacity: 0.9;
+        }
+
+        .layui-layer-title {
+            background-color: #393D49;
+            color: #FFF;
+            border: none;
+        }
+
+        .layui-layer-content {
+            background-color: #393D49;
+            color: #FFF;
+            /*border-top: 1px dotted #BBB;
+            border-bottom: 1px dotted #BBB;*/
+        }
+
+        .layui-layer-btn {
+            background-color: #393D49;
+            text-align: center;
+            padding-top: 0px;
+            border: none;
+        }
+
+            .layui-layer-btn a {
+                margin-top: 10px;
+            }
+
+        .layui-form-switch {
+            height: 24px;
+        }
+
+        .layui-colorpicker-main-input div.layui-inline {
+            margin-right: 0px;
+        }
+
+        .layui-colorpicker-trigger-i {
+            display: inline-block;
+            color: #FFF;
+            font-size: 12px;
+            top: -5px;
+            left: 0px;
+            position: relative;
+        }
+
+        .layui-slider-input-btn {
+            display: block;
+        }
+
+        .layui-layer-iframe .layui-layer-btn, .layui-layer-page .layui-layer-btn {
+            padding-top: 0px;
+        }
+
+        .rangeslider__fill {
+            background: #5FB878;
+        }
+
+        .rangeslider__handle {
+            width: 20px;
+            height: 20px;
+            top: -7px;
+        }
+
+        .rangeslider, .rangeslider__fill {
+            height: 5px;
+            width: 190px;
+            float: left;
+            top: 0px;
+        }
+
+        #js-rangeslider-0 {
+            top: 17px;
+        }
+		
+		.layui-colorpicker
+		{
+			border: 0px solid #e6e6e6;
+		}
+		
+    </style>
+
+    <script type="text/javascript" src="/js/md5.js?v1"></script>
+
+    <script type="text/javascript" src="/randomdeskry/js/randomdeskry.js?v73"></script>
+
+</body>
+</html>

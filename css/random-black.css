@@ -1,0 +1,768 @@
+﻿body {
+    padding: 0px;
+    margin: 0px auto;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #414550;
+    opacity: 1;
+}
+
+@keyframes loading {
+    form {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-moz-keyframes loading {
+    form {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-o-keyframes loading {
+    form {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes loading {
+    form {
+        transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.rotateImg {
+    animation: loading 0.8s linear infinite;
+    -webkit-animation: loading 0.8s linear infinite; /* Safari 和 Chrome */
+}
+
+.auto-style1 {
+    width: 150px;
+}
+
+.logo {
+    width: 60px;
+    margin-top: 20px;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid red;
+    position: relative;
+}
+
+.left-main {
+    opacity: 1;
+    background-color: #808080;
+    width: 100%;
+    height: 93%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid red;
+    position: absolute;
+    left: -100%;
+}
+
+.left-main-userlist {
+    z-index: 15;
+    opacity: 0.9;
+    background-color: #414550;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid red;
+    position: absolute;
+}
+
+    .left-main-userlist .userListHeader {
+        height: 45px;
+        background-color: #BBB;
+        margin-bottom: 5px;
+    }
+
+#user_list {
+    height: 77%;
+}
+
+    #user_list a {
+        background-color: #BBB;
+        border-radius:0px;
+    }
+
+
+.zql-bnt-users {
+    background: url(/img/sys/peoples.png) center no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 2px;
+}
+
+.zql-bnt-user {
+    background: url(/img/sys/people.png) center no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 2px;
+}
+
+.left-main-pannel {
+    z-index: 15;
+    opacity: 0.6;
+    background-color: #808080;
+    width: 20%;
+    height: 100%;
+    right: 0px;
+    position: absolute;
+}
+
+.left-main-pannel_upUserlist {
+    z-index: 15;
+    background-color:transparent;
+    width: 20%;
+    height: 100%;
+    right: 0px;
+    position: absolute;
+}
+
+.right-main {
+    opacity: 1;
+    background-color: #808080;
+    width: 100%;
+    height: 85%;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid red;
+    position: absolute;
+    right: -100%;
+}
+
+.right-main-roomlist {
+    z-index: 15;
+    opacity: 1;
+    background-color: white;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 0px solid red;
+    position: absolute;
+    right: 0px;
+}
+
+.zql_btn_inroom {
+    background: url(/img/sys/home.png) center no-repeat;
+    display: inline-block;
+    height: 20px;
+    width: 20px;
+    position: relative;
+    top: 7px;
+}
+
+.right-main-roomlist-main {
+    height: 60%;
+}
+
+.hotrooms_title {
+    font-size: 16px;
+    font-weight: 900;
+    color: green;
+    margin-top: 20px;
+    margin-left: 10px;
+    height: 5%;
+    border-bottom: 1px solid #d6e9c6;
+}
+
+.right-main-roomlist-title {
+    font-size: 16px;
+    font-weight: 900;
+    color: green;
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 25px;
+    border-bottom: 1px solid #d6e9c6;
+}
+
+
+.right-main-pannel {
+    z-index: 15;
+    opacity: 0.6;
+    background-color: #808080;
+    width: 20%;
+    height: 100%;
+    left: 0px;
+    position: absolute;
+}
+
+.title-main {
+    z-index: 1;
+    border-top: 0px solid #DEDEDE;
+    border-bottom: 0px solid #DEDEDE;
+    width: 100%;
+    min-height: 35px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    /*background-color: #EFEFEF;*/
+}
+
+.title-left {
+    border-right: 0px solid green;
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: url('/img/sys/peoples.png') center no-repeat;
+    cursor: pointer;
+}
+
+.title-center {
+    border: 0px solid green;
+    width: 80%;
+    height: 35px;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    left: 10%;
+}
+
+.title-center-roomname {
+    float: left;
+    margin-left: 0.2rem;
+    margin-top: 0rem;
+    line-height: 35px;
+    font-size: 15px;
+    color: #888;
+}
+
+.title-center-roomcmd {
+    float: right;
+    margin-right: 5px;
+    margin-top: 8px;
+}
+
+.title-right {
+    border-left: 0px solid green;
+    width: 10%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background: url('/img/sys/set3.png') center no-repeat;
+    background-size: 25px;
+    cursor: pointer;
+}
+
+.message-body {
+    /*border-bottom: 1px solid #DEDEDE;*/
+    width: 100%;
+    height: 95%;
+    overflow: hidden;
+    position: absolute;
+    top: 5%;
+}
+
+    .message-body .userInfo {
+        height: auto;
+        width: 350px;
+        overflow: hidden;
+        color: #CCC;
+    }
+
+#area_VIP {
+    margin-bottom: 0px;
+    position: relative;
+    background-color: transparent;
+}
+
+#inp_nickname_other {
+    background-color: transparent;
+    color: orange;
+    border-color: orange;
+}
+
+#div_msgpanel {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#div_msgbox {
+    /*background-color: white;*/
+    height: 100%;
+    min-width: 10rem;
+    max-width: 60rem;
+    margin: 0px auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+    #div_msgbox .timeSpan {
+        display: none;
+    }
+
+#div_privmsg {
+    /*background-color: white;*/
+    height: 93%;
+    min-width: 10rem;
+    max-width: 60rem;
+    margin: 0px auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.input-main {
+    border: 0px solid #39D;
+    width: 100%;
+    height: 6%;
+    position: absolute;
+    top: 93%;
+    display: none;
+}
+
+.input-tools {
+    display: none;
+    border: 0px solid #39D;
+    width: 100%;
+    height: 40%;
+    /*overflow: hidden;*/
+    position: absolute;
+    top: 60%;
+}
+
+.input-tools-some {
+    float: left;
+    width: 11%;
+    margin-left: 0px;
+    margin-top: 5px;
+}
+
+.emoji_div {
+    position: absolute;
+    top: -238px;
+    left: 10px;
+    width: 330px;
+    height: 235px;
+    border: 1px solid #bfbfbf;
+    border-radius: 5px;
+    display: none;
+    background-color: white;
+    z-index: 20;
+}
+
+.emoji {
+    margin-top: 5px;
+    margin-right: 8px;
+}
+
+.input-tools-link-send {
+    float: left;
+    width: 75%;
+    text-align: center;
+    margin-right: 5px;
+    margin-top: 0px;
+}
+
+.input-tools-link-more {
+    padding-left: 5px;
+    display: table-cell;
+    min-width: 8rem;
+    width: 5%;
+    /*float: left;*/
+    margin-top: 2px;
+}
+
+.input-tools-link-img {
+    display: table-cell;
+    min-width: 7rem;
+    width: 5%;
+    margin-top: 2px;
+}
+
+.input-message {
+    border: 0px solid #39D;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+}
+
+.input-area {
+    display: table-cell;
+    border: 1px solid #DEDEDE;
+    background-color: white;
+    width: 100%;
+    height: 37px;
+    overflow: hidden;
+    text-align: left;
+    position: relative;
+    top: 0px;
+    left: -4px;
+    border-radius: 5px;
+    color: #444;
+}
+
+    .input-area input {
+        width: 100%;
+        height: 35px;
+        border-left: #fff 0px solid;
+        border-top: #fff 0px solid;
+        border-right: #fff 0px solid;
+        border-bottom: #fff 0px solid;
+        margin: 0px 0px 0px 0px;
+        padding-left: 5px;
+        background: #FDFDFD;
+        font-size: 1em;
+        line-height: 1.5em;
+        text-align: left;
+        position: relative;
+        top: 0px;
+        border-radius: 5px;
+        outline: none;
+    }
+
+
+/*****/
+
+body .demo-class .layui-layer-btn .layui-layer-btn0 {
+    background: #5cb85c;
+    border: 1px solid #5cb85c;
+}
+
+/*滚动条配色开始*/
+.scrollbar {
+    overflow-y: auto;
+}
+
+    .scrollbar::-webkit-scrollbar {
+        width: 4px;
+        height: 4px;
+    }
+
+    .scrollbar::-webkit-scrollbar-button {
+        display: none;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        background-color: transparent;
+        border-radius:8px;
+    }
+
+    .scrollbar::-webkit-scrollbar-track-piece {
+        background-color: transparent;
+        border-radius: 8px;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        background-color: #DEDEDE;
+        border-radius: 8px;
+    }
+
+        .scrollbar::-webkit-scrollbar-thumb:hover {
+            background-color: #DEDEDE;
+        }
+
+    .scrollbar::-webkit-scrollbar-corner {
+        background-color: transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar-resizer {
+        background-color: transparent;
+    }
+/*滚动条配色结束*/
+
+.label {
+    display: inline;
+    padding: .1em .6em;
+    font-size: 75%;
+    font-weight: bold;
+    line-height: 1;
+    color: #a0a0a0;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+}
+
+.label-info {
+    background-color: #ffe6b8;
+}
+
+    .label-info[href]:hover,
+    .label-info[href]:focus {
+        background-color: #ffe6b8;
+    }
+
+.item_emoji {
+    line-height: 32px;
+    margin-left: 5px;
+}
+
+.clearboth {
+    color: gray;
+    clear: both;
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+body {
+    font-family: 'Microsoft YaHei',Arial;
+    overflow: hidden;
+}
+
+.chatbox {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.chatarrow {
+    position: absolute;
+    top: 20px;
+    width: 0px;
+    height: 0px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    /*以下属性可以是IE5兼容*/
+    font-size: 0px;
+    line-height: 0px;
+}
+
+.chat {
+    margin-top: 5px;
+    padding: 7px;
+    word-wrap: break-word;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #cfffcf;
+    float: left;
+}
+
+.selfchat {
+    background-color: #ffe6b8;
+    float: right;
+}
+
+.chat_msg {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    background-color: #f6f6f6;
+    color: #a0a0a0;
+    text-align: center;
+    margin-bottom: 15px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+a {
+    cursor: pointer;
+}
+
+#zone_left {
+    display: none;
+    float: left;
+    width: 270px;
+    background-color: #f9fff2;
+    border-right: 1px solid #e4e4e4;
+    -moz-user-select: none;
+}
+
+#zone_right {
+    float: left;
+    margin-left: 10px;
+}
+
+
+.hotrooms_lock {
+    background: url(/img/sys/lock1.png) center no-repeat;
+    display: inline-block;
+    height: 15px;
+    width: 15px;
+    position: relative;
+    top: 1px;
+    left: -3px;
+}
+
+.badge {
+    margin-top: 2px;
+    background-color: orange;
+}
+
+.inroom_leftzone {
+    margin-top: 15px;
+    float: left;
+    height: 170px;
+    width: 50%;
+    border-right: 1px solid #ececec;
+}
+
+.inroom_rightzone {
+    margin-top: 15px;
+    float: right;
+    height: 170px;
+    width: 50%;
+    border-left: 1px solid #ececec;
+}
+
+.class_hotrooms {
+    clear: both;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-left: 10px;
+    float: left;
+    cursor: pointer;
+}
+
+#goTop {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #DBDBDB;
+    color: #999;
+    line-height: 50px;
+    padding-left: 12px;
+    z-index: 10;
+}
+
+#warningReport {
+    position: absolute;
+    bottom: 125px;
+    right: 10px;
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #DBDBDB;
+    color: red;
+    line-height: 50px;
+    padding-left: 12px;
+    z-index: 10;
+}
+
+#goBottom {
+    position: absolute;
+    bottom: 70px;
+    right: 10px;
+    opacity: 0.5;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: #DBDBDB;
+    color: #999;
+    line-height: 50px;
+    padding-left: 12px;
+    z-index: 10;
+}
+
+.loginTips {
+    padding: 10px;
+    line-height: 22px;
+    background-color: #393D49;
+    color: #fff;
+    font-weight: 300;
+    letter-spacing: 0px;
+}
+
+    .loginTips ul {
+        font-weight: 300;
+        text-align: center;
+        margin-bottom: 5px;
+        font-weight: 700;
+        font-size: 15px;
+        color: red;
+    }
+
+    .loginTips li {
+        font-weight: 300;
+        font-size: 12px;
+        text-align: left;
+        color: #DEDEDE;
+    }
+
+    .loginTips span {
+        display: table-cell;
+    }
+
+.loginTipsKF {
+    border: 1px dashed #999;
+    text-align: center;
+    font-size: 10px;
+    color: #BBB;
+}
+
+    .loginTipsKF span {
+        display: table-cell;
+    }
+
+        .loginTipsKF span:first-child {
+            text-align: right;
+            width: 80px;
+        }
+
+    .loginTipsKF a {
+        color: #5cb85c;
+    }
+
+
+.barrage_box div p {
+    margin: 14px;
+}
